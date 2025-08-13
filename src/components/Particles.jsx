@@ -83,9 +83,11 @@ function Particles() {
   /**
    * Set Image&Video Assets
    */
-  const videoTexture = useVideoTexture(
-    "/images/6753383-uhd_4096_2160_25fps.mp4"
-  );
+  // const videoTexture = useVideoTexture(
+  //   "/images/6753383-uhd_4096_2160_25fps.mp4"
+  // );
+
+  const videoTexture = useTexture("/images/7b727be9721f701010bd91872706e81a.jpg");
 
   const pixelsUrls = [
     "/images/pixels/pix-01-80.jpg",
@@ -94,15 +96,25 @@ function Particles() {
     "/images/pixels/pix-04-80.jpg",
   ];
   const pixelsVideoUrls = [
-    "/images/pixels/pixel_emoji_1.webm",
-    "/images/pixels/pixel_emoji_2.webm",
-    "/images/pixels/pixel_emoji_3.webm",
-    "/images/pixels/pixel_emoji_4.webm",
+    // "/images/pixels/pixel_emoji_1.webm",
+    // "/images/pixels/pixel_emoji_2.webm",
+    // "/images/pixels/pixel_emoji_3.webm",
+    // "/images/pixels/pixel_emoji_4.webm",
+    "/images/pixels/emoji-01-80.png",
+    "/images/pixels/emoji-02-80.png",
+    "/images/pixels/emoji-03-80.png",
+    "/images/pixels/emoji-04-80.png",
+    "/images/pixels/emoji-05-80.png",
+    "/images/pixels/emoji-06-80.png",
+    "/images/pixels/emoji-07-80.png",
+    "/images/pixels/emoji-08-80.png",
+    "/images/pixels/emoji-09-80.png",
+    "/images/pixels/emoji-10-80.png",
   ]
   const pixelsVideoArray = [];
 
   for(const url of pixelsVideoUrls) {
-    pixelsVideoArray.push(useVideoTexture(url));
+    pixelsVideoArray.push(useTexture(url));
   }
 
   const pixelsImageArray = useTexture(pixelsUrls);
@@ -137,7 +149,8 @@ function Particles() {
   return (
     <>
       <points>
-        <planeGeometry args={[1.78 * 5, 5, 192 * 0.25, 108 * 0.25]} />
+        {/* <planeGeometry args={[1.78 * 5, 5, 192 * .5, 108 * .5]} /> */}
+        <planeGeometry args={[4.5, 6, 90*0.5, 120*0.5]} />
         <particlesShaderMaterial ref={materialRef} transparent={true} />
       </points>
     </>
