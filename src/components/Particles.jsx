@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 import { shaderMaterial, useVideoTexture, useTexture } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
@@ -29,7 +29,10 @@ const ParticlesShaderMaterial = shaderMaterial(
 
 extend({ ParticlesShaderMaterial });
 
-function Particles() {
+function Particles({params, setSliderValues}) {
+
+  // const [animatedSliderValues, setAnimatedSliderValues] = useState(params);
+
   /**
    * Options GUI
    */
@@ -136,7 +139,7 @@ function Particles() {
     if (materialRef.current) {
       materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
 
-      materialRef.current.uniforms.uMinSize.value = minSize;
+      materialRef.current.uniforms.uMinSize.value = params.particleMinSize;
       materialRef.current.uniforms.uMaxSize.value = maxSize;
 
       materialRef.current.uniforms.uInMin.value = inMin;
@@ -144,6 +147,8 @@ function Particles() {
       materialRef.current.uniforms.uOutMin.value = outMin;
       materialRef.current.uniforms.uOutMax.value = outMax;
     }
+
+    
   });
 
   return (

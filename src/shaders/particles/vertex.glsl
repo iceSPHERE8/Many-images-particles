@@ -19,7 +19,7 @@ void main() {
     float pointSizeFac = remap(tempFac, 0.0, 1.0, uMinSize, uMaxSize);
     
     // gl_PointSize = 100.0 * pointSizeFac;
-    gl_PointSize = 13.0 * uMaxSize;
+    gl_PointSize = 15.0 * uMinSize;
 
     // Varyings
     vUv = uv;
