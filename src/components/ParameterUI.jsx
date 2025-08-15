@@ -14,13 +14,14 @@ function ParameterUI({ sliderValues, onSliderChange }) {
               onChange={onSliderChange}
               name={"particleMinSize"}
               d_value={sliderValues.particleMinSize}
-              autoAnimate={true}
+              // phaseOffset={0}
             />
             <SliderUI
               label={"Particle Max Size"}
               onChange={onSliderChange}
               name={"particleMaxSize"}
               d_value={sliderValues.particleMaxSize}
+              // phaseOffset={Math.PI*4}
             />
           </div>
           <div className="bg-[#dedede] mt-2 p-2 rounded-md shadow-[0_1px_2px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
@@ -29,6 +30,7 @@ function ParameterUI({ sliderValues, onSliderChange }) {
               onChange={onSliderChange}
               name={"iMinBrightness"}
               d_value={sliderValues.iMinBrightness}
+              // phaseOffset={Math.PI}
             />
             <SliderUI
               label={"I-Maximal Brightness"}

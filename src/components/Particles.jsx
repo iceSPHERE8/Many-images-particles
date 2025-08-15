@@ -6,8 +6,6 @@ import { extend, useFrame } from "@react-three/fiber";
 import vertextShader from "../shaders/particles/vertex.glsl";
 import fragmentShader from "../shaders/particles/fragment.glsl";
 
-import { useControls, folder } from "leva";
-
 /**
  * Create Shader Material
  */
@@ -30,59 +28,6 @@ const ParticlesShaderMaterial = shaderMaterial(
 extend({ ParticlesShaderMaterial });
 
 function Particles({params, setSliderValues}) {
-
-  // const [animatedSliderValues, setAnimatedSliderValues] = useState(params);
-
-  /**
-   * Options GUI
-   */
-  const { minSize, maxSize, inMin, inMax, outMin, outMax } = useControls("Particle Params", {
-    minSize: {
-      value: 0,
-      min: 0,
-      max: 1,
-      step: 0.001,
-      label: "Minimal Particle Size",
-    },
-    maxSize: {
-      value: 1,
-      min: 0,
-      max: 1,
-      step: 0.001,
-      label: "Maximal Particle Size",
-    },
-    "Brightness Mapping": folder({
-      inMin: {
-      value: 0,
-      min: 0,
-      max: 1,
-      step: 0.001,
-      label: "Input Minimal Brightness",
-    },
-    inMax: {
-      value: 0.2,
-      min: 0,
-      max: 1,
-      step: 0.001,
-      label: "Input Maximal Brightness",
-    },
-    outMin: {
-      value: 0.0,
-      min: 0,
-      max: 1,
-      step: 0.001,
-      label: "Output Minimal Brightness",
-    },
-    outMax: {
-      value: 1.0,
-      min: 0,
-      max: 1,
-      step: 0.001,
-      label: "Output Maximal Brightness",
-    },
-    })
-  });
-
   /**
    * Set Image&Video Assets
    */

@@ -18,7 +18,7 @@ function App() {
 
   const onSliderChange = (name, newValue) => {
     setSliderValues((prevValues) => {
-        console.log("1")
+        // console.log("1")
       return {
         ...prevValues,
         [name]: newValue,

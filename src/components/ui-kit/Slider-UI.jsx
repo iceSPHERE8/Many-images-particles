@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Slider } from "radix-ui";
 
 /**
@@ -11,7 +11,16 @@ import { Slider } from "radix-ui";
  * @param {boolean} props.autoAnimate - 是否启用正弦动画（true 启用，false 禁用）
  */
 function SliderUI(props) {
-  const { label, onChange, name, d_value } = props;
+  const { label, onChange, name, d_value, phaseOffset } = props;
+
+  let offset = useMemo(() => Math.random() * 4 * Math.PI, []);;
+
+  if(phaseOffset){
+    offset = phaseOffset;
+    console.log(offset)
+  }
+  // 生成随机相位偏移（0 到 2π），使用 useMemo 确保只在组件初始化时生成一次
+  // const phaseOffset = useMemo(() => Math.random() * 2 * Math.PI, []);
 
   // 内部状态：控制正弦动画的开关，初始为 true（启用动画）
   const [autoAnimate, setAutoAnimate] = useState(false);
@@ -40,7 +49,7 @@ function SliderUI(props) {
      */
     const animate = (time) => {
       // 计算正弦值并映射到 [0, 1]，周期为 2 秒
-      const newValue = (Math.sin((time / 1000) * Math.PI) + 1) / 2;
+      const newValue = (Math.sin((time / 1500) * Math.PI + offset) + 1) / 2;
       onChange(name, newValue); // 通知父组件更新 d_value
       // 继续下一帧动画
       animationFrameRef.current = requestAnimationFrame(animate);
@@ -83,7 +92,7 @@ function SliderUI(props) {
             type="checkbox"
             checked={autoAnimate}
             onChange={handleCheckboxChange}
-            className="h-3 w-3 appearance-none rounded-full bg-[#b6b6b6] backdrop-blur-md border border-gray-300/50 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2)] checked:bg-green-500/50 checked:shadow-[inset_0_2px_4px_rgba(255,255,255,0.2)] checked:border-green-400/50 transition-all duration-200 hover:cursor-pointer peer"
+            className="h-3 w-3 appearance-none rounded-full bg-[#b6b6b6] backdrop-blur-md border border-gray-300/50 shadow-[inset_0_1px_4px_rgba(255,255,255,0.5)] checked:bg-green-500/50 checked:shadow-[inset_0_1px_4px_rgba(255,255,255,0.5)] checked:border-green-400/50 transition-all duration-200 hover:cursor-pointer peer"
             aria-label="Toggle animation"
           />
           <span className="absolute hidden peer-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 peer-hover:opacity-100 transition-opacity duration-200">
