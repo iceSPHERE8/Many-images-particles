@@ -140,12 +140,12 @@ function Particles({params, setSliderValues}) {
       materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
 
       materialRef.current.uniforms.uMinSize.value = params.particleMinSize;
-      materialRef.current.uniforms.uMaxSize.value = maxSize;
+      materialRef.current.uniforms.uMaxSize.value = params.particleMaxSize;
 
-      materialRef.current.uniforms.uInMin.value = inMin;
-      materialRef.current.uniforms.uInMax.value = inMax;
-      materialRef.current.uniforms.uOutMin.value = outMin;
-      materialRef.current.uniforms.uOutMax.value = outMax;
+      materialRef.current.uniforms.uInMin.value = params.iMinBrightness;
+      materialRef.current.uniforms.uInMax.value = params.iMaxBrightness;
+      materialRef.current.uniforms.uOutMin.value = params.oMinBrightness;
+      materialRef.current.uniforms.uOutMax.value = params.oMaxBrightness;
     }
 
     

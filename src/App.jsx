@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import Particles from "./components/Particles";
@@ -10,10 +10,15 @@ function App() {
   const [sliderValues, setSliderValues] = useState({
     particleMinSize: 1,
     particleMaxSize: 1,
+    iMinBrightness: 0,
+    iMaxBrightness: 0.2,
+    oMinBrightness: 0,
+    oMaxBrightness: 1,
   });
 
   const onSliderChange = (name, newValue) => {
     setSliderValues((prevValues) => {
+        console.log("1")
       return {
         ...prevValues,
         [name]: newValue,
