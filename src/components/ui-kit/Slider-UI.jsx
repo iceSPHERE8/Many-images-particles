@@ -92,7 +92,7 @@ function SliderUI(props) {
             type="checkbox"
             checked={autoAnimate}
             onChange={handleCheckboxChange}
-            className="h-3 w-3 appearance-none rounded-full bg-[#b6b6b6] backdrop-blur-md border border-gray-300/50 shadow-[inset_0_1px_4px_rgba(255,255,255,0.5)] checked:bg-green-500/50 checked:shadow-[inset_0_1px_4px_rgba(255,255,255,0.5)] checked:border-green-400/50 transition-all duration-200 hover:cursor-pointer peer"
+            className="h-3 w-3 appearance-none rounded-full bg-[#b6b6b6] backdrop-blur-md border-gray-300/75 shadow-[0_0_1px_rgba(0,0,0,0.2),inset_0_2px_2px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(255,255,255,0.6)] checked:bg-green-500/50 checked:shadow-[inset_0_2px_2px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(255,255,255,0.6),0_0px_4px_rgba(0,255,0,0.6),0_0px_2px_rgba(0,255,0,0.6)] transition-all duration-200 hover:cursor-pointer peer"
             aria-label="Toggle animation"
           />
           <span className="absolute hidden peer-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 peer-hover:opacity-100 transition-opacity duration-200">
