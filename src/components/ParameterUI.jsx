@@ -1,6 +1,19 @@
+import { useRef } from "react";
+
 import SliderUI from "./ui-kit/Slider-UI";
 
-function ParameterUI({ sliderValues, onSliderChange }) {
+import MyDropzone from "./DropZone";
+
+function ParameterUI({ sliderValues, onSliderChange, onFileAccepted }) {
+  const dropzoneRef = useRef();
+
+  const openDialog = () => {
+    if (dropzoneRef.current) {
+      console.log(dropzoneRef.current)
+      dropzoneRef.current.open();
+    }
+  };
+
   return (
     <>
       <div className="p-2 border-r-2 border-[#e5e5e5] w-4/12 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.2),rgba(255,255,255,0.1)_5px,rgba(244,244,244,0.2)_5px,rgba(255,255,255,0.2)_10px)]">
@@ -50,6 +63,11 @@ function ParameterUI({ sliderValues, onSliderChange }) {
               name={"oMaxBrightness"}
               d_value={sliderValues.oMaxBrightness}
             />
+          </div>
+
+          <div className="bg-[#dedede] mt-2 p-2 rounded-md shadow-[0_1px_2px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
+            <MyDropzone onFileAccepted={onFileAccepted} ref={dropzoneRef} noClick noKeyboard />
+            <button onClick={openDialog}>click</button>
           </div>
         </section>
       </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import Particles from "./components/Particles";
@@ -16,6 +16,12 @@ function App() {
     oMaxBrightness: 1,
   });
 
+  const [imageUrls, setImageUrls] = useState(null);
+
+  const handleFileAccepted = useCallback((files) => {
+    setImageUrls(files[0]);
+  },[])
+
   const onSliderChange = (name, newValue) => {
     setSliderValues((prevValues) => {
         // console.log("1")
@@ -32,9 +38,10 @@ function App() {
         <ParameterUI
           sliderValues={sliderValues}
           onSliderChange={onSliderChange}
+          onFileAccepted={handleFileAccepted}
         />
         <Canvas>
-          <Particles params={sliderValues} setSliderValues={setSliderValues} />
+          <Particles params={sliderValues} textureFile={imageUrls} />
         </Canvas>
       </div>
     </>

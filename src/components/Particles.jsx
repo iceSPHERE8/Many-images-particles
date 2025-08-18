@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 
 import { shaderMaterial, useVideoTexture, useTexture } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
@@ -27,15 +27,11 @@ const ParticlesShaderMaterial = shaderMaterial(
 
 extend({ ParticlesShaderMaterial });
 
-function Particles({params, setSliderValues}) {
+function Particles({params, textureFile}) {
   /**
    * Set Image&Video Assets
    */
-  // const videoTexture = useVideoTexture(
-  //   "/images/6753383-uhd_4096_2160_25fps.mp4"
-  // );
-
-  const videoTexture = useTexture("/images/7b727be9721f701010bd91872706e81a.jpg");
+  const texture = useTexture(textureFile || "/images/7b727be9721f701010bd91872706e81a.jpg");
 
   const pixelsUrls = [
     "/images/pixels/pix-01-80.jpg",
@@ -72,13 +68,13 @@ function Particles({params, setSliderValues}) {
 
   useEffect(() => {
     // setting the shader uniforms
-    if (materialRef.current && videoTexture) {
-      materialRef.current.uniforms.uVideoTexture.value = videoTexture;
+    if (materialRef.current && texture) {
+      materialRef.current.uniforms.uVideoTexture.value = texture;
       materialRef.current.uniforms.uElementTexture.value = pixelsArray;
     }
 
     console.log(pixelsArray)
-  }, [videoTexture]);
+  }, [texture]);
 
   useFrame(({ clock }) => {
     if (materialRef.current) {
