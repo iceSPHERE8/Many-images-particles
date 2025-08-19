@@ -13,11 +13,11 @@ import { Slider } from "radix-ui";
 function SliderUI(props) {
   const { label, onChange, name, d_value, phaseOffset } = props;
 
-  let offset = useMemo(() => Math.random() * 4 * Math.PI, []);;
+  let offset = useMemo(() => Math.random() * 4 * Math.PI, []);
 
-  if(phaseOffset){
+  if (phaseOffset) {
     offset = phaseOffset;
-    console.log(offset)
+    console.log(offset);
   }
   // 生成随机相位偏移（0 到 2π），使用 useMemo 确保只在组件初始化时生成一次
   // const phaseOffset = useMemo(() => Math.random() * 2 * Math.PI, []);
@@ -86,7 +86,7 @@ function SliderUI(props) {
     <>
       {/* 显示滑块标签 */}
       <div className="flex items-center justify-between mb-[-6px]">
-        <div className="font-handjet text-sm">{label}</div>
+        <div className="font-handjet font-bold text-sm text-[#012222]">{label}</div>
         <div className="relative">
           <input
             type="checkbox"

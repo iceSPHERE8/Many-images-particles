@@ -1,7 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900');
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-handjet: "Handjet", sans-serif;
+  --blur-xs: 2px; /* Custom blur for LED light diffusion */
+  --animation-led-flicker: ledFlicker 0.5s infinite steps(1, end); /* Custom animation */
+}
 
+@layer utilities {
+  /* Define keyframes for the LED flicker animation */
+  @keyframes ledFlicker {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }
+}
+
+/* Custom utility for dot-matrix effect using pseudo-element */
+.led-dot-matrix::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(123, 162, 150, 0.101) 1px, transparent 1px);
+  background-size: 3px 3px; /* Adjust for dot density */
+  z-index: 1;
+  opacity: 0.5;
 }

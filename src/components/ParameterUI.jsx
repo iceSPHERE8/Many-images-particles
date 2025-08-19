@@ -9,7 +9,7 @@ function ParameterUI({ sliderValues, onSliderChange, onFileAccepted }) {
 
   const openDialog = () => {
     if (dropzoneRef.current) {
-      console.log(dropzoneRef.current)
+      console.log(dropzoneRef.current);
       dropzoneRef.current.open();
     }
   };
@@ -18,10 +18,13 @@ function ParameterUI({ sliderValues, onSliderChange, onFileAccepted }) {
     <>
       <div className="p-2 border-r-2 border-[#e5e5e5] w-4/12 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.2),rgba(255,255,255,0.1)_5px,rgba(244,244,244,0.2)_5px,rgba(255,255,255,0.2)_10px)]">
         <section className="bg-[linear-gradient(135deg,#D7D7D740_0%,#EFEEEE40_50%,#D7D7D740_100%)] p-2 rounded-sm shadow-[inset_0_-1px_2px_rgba(255,255,255,0.8),inset_0_2px_2px_rgba(255,255,255,0.7)]">
-          <div className="font-handjet font-bold border-b-2 mb-2 border-[#aaaaaa]">
-            -Particles Parameters-
+          <div className="bg-[#041312] flex justify-center rounded-md border-2 border-[#cacaca] shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_2px_1px_rgba(255,255,255,0.5),inset_0_-2px_4px_rgba(255,255,255,0.5),inset_0_-2px_1px_rgba(255,255,255,0.7),inset_0_6px_1px_rgba(255,255,255,0.5),inset_0_12px_2px_rgba(255,255,255,0.1)] relative overflow-hidden led-dot-matrix">
+            <div className="font-handjet font-bold text-[#9edbca] drop-shadow-[0_0_4px_rgba(158,219,202,0.4)] hover:drop-shadow-[0_0_4px_rgba(158,219,202,1)] transition-all duration-300">
+              -Particles Parameters-
+            </div>
           </div>
-          <div className="bg-[#dedede] mt-4 p-2 rounded-md shadow-[0_1px_2px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
+
+          <div className="bg-[#dedede] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
             <SliderUI
               label={"Particle Min Size"}
               onChange={onSliderChange}
@@ -37,7 +40,7 @@ function ParameterUI({ sliderValues, onSliderChange, onFileAccepted }) {
               // phaseOffset={Math.PI*4}
             />
           </div>
-          <div className="bg-[#dedede] mt-2 p-2 rounded-md shadow-[0_1px_2px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
+          <div className="bg-[#dedede] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
             <SliderUI
               label={"I-Minimal Brightness"}
               onChange={onSliderChange}
@@ -65,9 +68,25 @@ function ParameterUI({ sliderValues, onSliderChange, onFileAccepted }) {
             />
           </div>
 
-          <div className="bg-[#dedede] mt-2 p-2 rounded-md shadow-[0_1px_2px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
-            <MyDropzone onFileAccepted={onFileAccepted} ref={dropzoneRef} noClick noKeyboard />
-            <button onClick={openDialog}>click</button>
+          <div className="bg-[#dedede] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
+            <div className="flex justify-left">
+            <div className="bg-[#041312] flex w-16 justify-center rounded-md border-2 border-[#cacaca] shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_2px_1px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(255,255,255,0.5),inset_0_-2px_1px_rgba(255,255,255,0.7)] relative overflow-hidden led-dot-matrix">
+              <div className="font-handjet font-bold text-[#9edbca] drop-shadow-[0_0_4px_rgba(158,219,202,0.4)] hover:drop-shadow-[0_0_4px_rgba(158,219,202,1)] transition-all duration-300">
+                loding...
+              </div>
+            </div>
+            <div className="ml-2">
+              <button className="px-4 text-sm font-handjet font-bold rounded-full bg-[#bacbe4] shadow-[inset_0_-2px_2px_rgba(97,134,193,0.7),inset_0_-4px_2px_rgba(97,134,193,0.5),inset_0_12px_2px_rgba(255,255,255,0.5)]">
+                Upload
+              </button>
+            </div>
+            </div>
+            {/* <MyDropzone
+              onFileAccepted={onFileAccepted}
+              ref={dropzoneRef}
+              noClick
+              noKeyboard
+            /> */}
           </div>
         </section>
       </div>
