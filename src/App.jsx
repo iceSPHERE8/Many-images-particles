@@ -16,10 +16,15 @@ function App() {
     oMaxBrightness: 1,
   });
 
-  const [imageUrls, setImageUrls] = useState(null);
+  const [mainImageUrl, setMainImageUrl] = useState(null);
+  const [elementsUrl, setElementsUrl] = useState(null);
 
-  const handleFileAccepted = useCallback((files) => {
-    setImageUrls(files[0]);
+  const handleMainFileAccepted = useCallback((files) => {
+    setMainImageUrl(files[0]);
+  },[])
+
+  const handleElementsFileAccepted = useCallback((files) => {
+    setElementsUrl(files);
   },[])
 
   const onSliderChange = (name, newValue) => {
@@ -38,10 +43,11 @@ function App() {
         <ParameterUI
           sliderValues={sliderValues}
           onSliderChange={onSliderChange}
-          onFileAccepted={handleFileAccepted}
+          onFileAccepted={handleMainFileAccepted}
+          onElementsAccepted={handleElementsFileAccepted}
         />
         <Canvas>
-          <Particles params={sliderValues} textureFile={imageUrls} />
+          <Particles params={sliderValues} textureFile={mainImageUrl} elementsTexUrls={elementsUrl} />
         </Canvas>
       </div>
     </>

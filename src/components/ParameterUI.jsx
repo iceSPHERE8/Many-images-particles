@@ -4,7 +4,7 @@ import SliderUI from "./ui-kit/Slider-UI";
 
 import MyDropzone from "./DropZone";
 
-function ParameterUI({ sliderValues, onSliderChange, onFileAccepted }) {
+function ParameterUI({ sliderValues, onSliderChange, onFileAccepted,onElementsAccepted }) {
   const dropzoneRef = useRef();
 
   const openDialog = () => {
@@ -23,70 +23,55 @@ function ParameterUI({ sliderValues, onSliderChange, onFileAccepted }) {
               -Particles Parameters-
             </div>
           </div>
-
           <div className="bg-[#dedede] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
-            <SliderUI
-              label={"Particle Min Size"}
-              onChange={onSliderChange}
-              name={"particleMinSize"}
-              d_value={sliderValues.particleMinSize}
-              // phaseOffset={0}
-            />
-            <SliderUI
-              label={"Particle Max Size"}
-              onChange={onSliderChange}
-              name={"particleMaxSize"}
-              d_value={sliderValues.particleMaxSize}
-              // phaseOffset={Math.PI*4}
-            />
+            <div className="bg-[#dddddd] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
+              <SliderUI
+                label={"Particle Min Size"}
+                onChange={onSliderChange}
+                name={"particleMinSize"}
+                d_value={sliderValues.particleMinSize}
+                // phaseOffset={0}
+              />
+              <SliderUI
+                label={"Particle Max Size"}
+                onChange={onSliderChange}
+                name={"particleMaxSize"}
+                d_value={sliderValues.particleMaxSize}
+                // phaseOffset={Math.PI*4}
+              />
+            </div>
+            <div className="bg-[#dddddd] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
+              <SliderUI
+                label={"I-Minimal Brightness"}
+                onChange={onSliderChange}
+                name={"iMinBrightness"}
+                d_value={sliderValues.iMinBrightness}
+                // phaseOffset={Math.PI}
+              />
+              <SliderUI
+                label={"I-Maximal Brightness"}
+                onChange={onSliderChange}
+                name={"iMaxBrightness"}
+                d_value={sliderValues.iMaxBrightness}
+              />
+              <SliderUI
+                label={"O-Maximal Brightness"}
+                onChange={onSliderChange}
+                name={"oMinBrightness"}
+                d_value={sliderValues.oMinBrightness}
+              />
+              <SliderUI
+                label={"O-Maximal Brightness"}
+                onChange={onSliderChange}
+                name={"oMaxBrightness"}
+                d_value={sliderValues.oMaxBrightness}
+              />
+            </div>
           </div>
-          <div className="bg-[#dedede] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
-            <SliderUI
-              label={"I-Minimal Brightness"}
-              onChange={onSliderChange}
-              name={"iMinBrightness"}
-              d_value={sliderValues.iMinBrightness}
-              // phaseOffset={Math.PI}
-            />
-            <SliderUI
-              label={"I-Maximal Brightness"}
-              onChange={onSliderChange}
-              name={"iMaxBrightness"}
-              d_value={sliderValues.iMaxBrightness}
-            />
-            <SliderUI
-              label={"O-Maximal Brightness"}
-              onChange={onSliderChange}
-              name={"oMinBrightness"}
-              d_value={sliderValues.oMinBrightness}
-            />
-            <SliderUI
-              label={"O-Maximal Brightness"}
-              onChange={onSliderChange}
-              name={"oMaxBrightness"}
-              d_value={sliderValues.oMaxBrightness}
-            />
-          </div>
 
-          <div className="bg-[#dedede] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
-            <div className="flex justify-left">
-            <div className="bg-[#041312] flex w-16 justify-center rounded-md border-2 border-[#cacaca] shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_2px_1px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(255,255,255,0.5),inset_0_-2px_1px_rgba(255,255,255,0.7)] relative overflow-hidden led-dot-matrix">
-              <div className="font-handjet font-bold text-[#9edbca] drop-shadow-[0_0_4px_rgba(158,219,202,0.4)] hover:drop-shadow-[0_0_4px_rgba(158,219,202,1)] transition-all duration-300">
-                loding...
-              </div>
-            </div>
-            <div className="ml-2">
-              <button className="px-4 text-sm font-handjet font-bold rounded-full bg-[#bacbe4] shadow-[inset_0_-2px_2px_rgba(97,134,193,0.7),inset_0_-4px_2px_rgba(97,134,193,0.5),inset_0_12px_2px_rgba(255,255,255,0.5)]">
-                Upload
-              </button>
-            </div>
-            </div>
-            {/* <MyDropzone
-              onFileAccepted={onFileAccepted}
-              ref={dropzoneRef}
-              noClick
-              noKeyboard
-            /> */}
+          <div className="mt-2 gap-1">
+            <MyDropzone onFileAccepted={onFileAccepted} display/>
+            <MyDropzone onFileAccepted={onElementsAccepted} />
           </div>
         </section>
       </div>
