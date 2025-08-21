@@ -11,7 +11,7 @@ import { Slider } from "radix-ui";
  * @param {boolean} props.autoAnimate - 是否启用正弦动画（true 启用，false 禁用）
  */
 function SliderUI(props) {
-  const { label, onChange, name, d_value, phaseOffset } = props;
+  const { label, onChange, name, d_value, phaseOffset, vmax } = props;
 
   let offset = useMemo(() => Math.random() * 4 * Math.PI, []);
 
@@ -48,8 +48,10 @@ function SliderUI(props) {
      * @param {number} time - requestAnimationFrame 提供的时间戳（毫秒）
      */
     const animate = (time) => {
-      // 计算正弦值并映射到 [0, 1]，周期为 2 秒
-      const newValue = (Math.sin((time / 1500) * Math.PI + offset) + 1) / 2;
+      // 使用默认值 1 如果 vmax 未定义
+      const maxValue = vmax !== undefined ? vmax : 1;
+      // 计算正弦值并映射到 [0, maxValue]，周期为 2 秒
+      const newValue = ((Math.sin((time / 1500) * Math.PI + offset) + 1) / 2) * maxValue;
       onChange(name, newValue); // 通知父组件更新 d_value
       // 继续下一帧动画
       animationFrameRef.current = requestAnimationFrame(animate);
@@ -105,7 +107,7 @@ function SliderUI(props) {
         <Slider.Root
           className="relative flex h-5 w-full touch-none select-none items-center"
           value={[d_value]} // 绑定父组件提供的受控值
-          max={1} // 最大值
+          max={vmax || 1} // 最大值
           step={0.001} // 步进值
           onValueChange={handleRadixChange} // 用户交互时的回调
         >

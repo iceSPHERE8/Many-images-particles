@@ -1,28 +1,44 @@
-import { useRef } from "react";
+import { useState } from "react";
 
 import SliderUI from "./ui-kit/Slider-UI";
 
 import MyDropzone from "./DropZone";
 
-function ParameterUI({ sliderValues, onSliderChange, onFileAccepted,onElementsAccepted }) {
-  const dropzoneRef = useRef();
-
-  const openDialog = () => {
-    if (dropzoneRef.current) {
-      console.log(dropzoneRef.current);
-      dropzoneRef.current.open();
-    }
-  };
-
+function ParameterUI({
+  sliderValues,
+  onSliderChange,
+  onFileAccepted,
+  onElementsAccepted,
+}) {
   return (
     <>
-      <div className="p-2 border-r-2 border-[#e5e5e5] w-4/12 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.2),rgba(255,255,255,0.1)_5px,rgba(244,244,244,0.2)_5px,rgba(255,255,255,0.2)_10px)]">
+      <div
+        className="p-2 relative border-r-2 w-full border-[#e5e5e5] bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.2),rgba(255,255,255,0.1)_5px,rgba(244,244,244,0.2)_5px,rgba(255,255,255,0.2)_10px)]"
+      >
         <section className="bg-[linear-gradient(135deg,#D7D7D740_0%,#EFEEEE40_50%,#D7D7D740_100%)] p-2 rounded-sm shadow-[inset_0_-1px_2px_rgba(255,255,255,0.8),inset_0_2px_2px_rgba(255,255,255,0.7)]">
           <div className="bg-[#041312] flex justify-center rounded-md border-2 border-[#cacaca] shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_2px_1px_rgba(255,255,255,0.5),inset_0_-2px_4px_rgba(255,255,255,0.5),inset_0_-2px_1px_rgba(255,255,255,0.7),inset_0_6px_1px_rgba(255,255,255,0.5),inset_0_12px_2px_rgba(255,255,255,0.1)] relative overflow-hidden led-dot-matrix">
-            <div className="font-handjet font-bold text-[#9edbca] drop-shadow-[0_0_4px_rgba(158,219,202,0.4)] hover:drop-shadow-[0_0_4px_rgba(158,219,202,1)] transition-all duration-300">
+            <div className="font-handjet font-bold text-[#d0e7ff] drop-shadow-[0_0_4px_rgba(158,219,202,0.4)] hover:drop-shadow-[0_0_4px_rgba(158,219,202,1)] transition-all duration-300">
               -Particles Parameters-
             </div>
           </div>
+
+          <div className="bg-[#dedede] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
+            <SliderUI
+              label={"Particle Base Size"}
+              onChange={onSliderChange}
+              name={"particleBaseSize"}
+              d_value={sliderValues.particleBaseSize}
+              vmax={10}
+            />
+            <SliderUI
+              label={"Particle Density"}
+              onChange={onSliderChange}
+              name={"particleDensity"}
+              d_value={sliderValues.particleDensity}
+              vmax={2}
+            />
+          </div>
+
           <div className="bg-[#dedede] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
             <div className="bg-[#dddddd] mt-1 p-2 rounded-md border-2 border-[#e0e0e050] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.5)]">
               <SliderUI
@@ -70,7 +86,7 @@ function ParameterUI({ sliderValues, onSliderChange, onFileAccepted,onElementsAc
           </div>
 
           <div className="mt-2 gap-1">
-            <MyDropzone onFileAccepted={onFileAccepted} display/>
+            <MyDropzone onFileAccepted={onFileAccepted} display />
             <MyDropzone onFileAccepted={onElementsAccepted} />
           </div>
         </section>

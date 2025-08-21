@@ -19,6 +19,7 @@ const ParticlesShaderMaterial = shaderMaterial(
     uInMax: 0,
     uOutMin: 0,
     uOutMax: 0,
+    uBaseSize: 1,
     uVideoTexture: null,
     uElementTexture: [],
   },
@@ -130,13 +131,14 @@ function Particles({ params, textureFile, elementsTexUrls }) {
       materialRef.current.uniforms.uInMax.value = params.iMaxBrightness;
       materialRef.current.uniforms.uOutMin.value = params.oMinBrightness;
       materialRef.current.uniforms.uOutMax.value = params.oMaxBrightness;
+      materialRef.current.uniforms.uBaseSize.value = params.particleBaseSize;
     }
   });
 
   // ------------------- 渲染粒子 -------------------
   return (
     <points>
-      <planeGeometry args={[textureSize.width, textureSize.height, Math.floor(textureSize.width * 10), Math.floor(textureSize.height * 10)]} />
+      <planeGeometry args={[textureSize.width, textureSize.height, Math.floor(textureSize.width * 10) * params.particleDensity, Math.floor(textureSize.height * 10) * params.particleDensity]} />
       <particlesShaderMaterial ref={materialRef} transparent={true} />
     </points>
   );
