@@ -8,6 +8,7 @@ function generateFragmentShader(textureCount) {
     uniform float uOutMin;
     uniform float uOutMax;
     varying vec2 vUv;
+    varying float vPointSize;
 
     float remap(float value, float inMin, float inMax, float outMin, float outMax) {
       return outMin + (value - inMin) / (inMax - inMin) * (outMax - outMin);
@@ -24,6 +25,10 @@ function generateFragmentShader(textureCount) {
 
       vec2 pointUv = vec2(gl_PointCoord.x, 1.0 - gl_PointCoord.y);
       vec4 finalColor;
+
+      if(vPointSize < 0.01){
+        discard;
+      }
 
       // 动态亮度分段
       ${generateBrightnessConditions(textureCount)}

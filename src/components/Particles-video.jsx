@@ -24,14 +24,14 @@ const ParticlesShaderMaterial = shaderMaterial(
     uElementTexture: [],
   },
   vertexShader,
-  generateFragmentShader(14) // 初始为空纹理，避免硬编码 14
+  generateFragmentShader(0) // 初始为空纹理，避免硬编码 14
 );
 
 extend({ ParticlesShaderMaterial });
 
 // =*=*=*=*=*=*=*=*=*=*=*=* 粒子组件 =*=*=*=*=*=*=*=*=*=*=*=*
 
-function Particles({ params, textureFile, elementsTexUrls }) {
+function ParticlesVideo({ params, textureFile, elementsTexUrls }) {
   // ------------------- 状态与引用 -------------------
   const [textureSize, setTextureSize] = useState({ width: 4.5, height: 6 });
 
@@ -46,8 +46,8 @@ function Particles({ params, textureFile, elementsTexUrls }) {
   /**
    * 加载主纹理（视频或图片）
    */
-  const mainTexture = useTexture(
-    textureFile || "/images/7b727be9721f701010bd91872706e81a.jpg"
+  const mainTexture = useVideoTexture(
+    textureFile || "images/6753383-uhd_4096_2160_25fps.mp4"
   );
 
   /**
@@ -94,8 +94,8 @@ function Particles({ params, textureFile, elementsTexUrls }) {
     // console.log(typeof(textureFile))
     if (mainTexture?.image) {
       const { width, height } = {
-        width: mainTexture.image.width,
-        height: mainTexture.image.height,
+        width: mainTexture.image.videoWidth,
+        height: mainTexture.image.videoHeight,
       };
 
       if (width && height) {
@@ -168,4 +168,4 @@ function Particles({ params, textureFile, elementsTexUrls }) {
   );
 }
 
-export default Particles;
+export default ParticlesVideo;

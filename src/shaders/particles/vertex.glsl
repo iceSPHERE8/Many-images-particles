@@ -4,6 +4,7 @@ uniform float uMaxSize;
 uniform float uBaseSize;
 
 varying vec2 vUv;
+varying float vPointSize;
 
 float remap(float value, float inMin, float inMax, float outMin, float outMax) {
     return outMin + (value - inMin) / (inMax - inMin) * (outMax - outMin);
@@ -24,4 +25,5 @@ void main() {
 
     // Varyings
     vUv = uv;
+    vPointSize = gl_PointSize;
 }
