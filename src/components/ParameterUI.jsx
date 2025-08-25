@@ -9,7 +9,7 @@ function ParameterUI({
   onElementsAccepted,
   mainTitle,
   onChangeMode,
-  imageMode
+  currentMode
 }) {
   return (
     <>
@@ -32,7 +32,7 @@ function ParameterUI({
               onChange={onSliderChange}
               name={"particleBaseSize"}
               d_value={sliderValues.particleBaseSize}
-              vmax={10}
+              vmax={1.5}
             />
             <SliderUI
               label={"Particle Density"}
@@ -90,8 +90,8 @@ function ParameterUI({
           </div>
 
           <div className="mt-2 gap-1">
-            <MyDropzone onFileAccepted={onFileAccepted} display imageMode={imageMode}  />
-            <MyDropzone onFileAccepted={onElementsAccepted} />
+            <MyDropzone labelText={"MAIN-TEXTURE"} onFileAccepted={onFileAccepted} display imageMode={currentMode}  />
+            <MyDropzone labelText={"ELEMENTS"} onFileAccepted={onElementsAccepted} />
           </div>
         </section>
       </div>

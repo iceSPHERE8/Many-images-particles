@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-function MyDropzone({ onFileAccepted, display, imageMode }) {
+function MyDropzone({ onFileAccepted, display, imageMode, labelText }) {
   const [selectedImages, setSelectedImages] = useState([]);
 
   const onDrop = useCallback(
@@ -74,8 +74,8 @@ function MyDropzone({ onFileAccepted, display, imageMode }) {
                 src={selectedImages[0]}
                 className="w-full h-full object-cover opacity-75"
                 autoPlay
-                muted
-                loop
+                // muted
+                // loop
               />
             ))}
         </div>
@@ -84,7 +84,7 @@ function MyDropzone({ onFileAccepted, display, imageMode }) {
       <div {...getRootProps()} className={dropzoneClasses}>
         <input {...getInputProps()} />
         <div className="font-handjet font-bold text-[#d0e7ff]">
-          {<p className="text-center">main texture here</p>}
+          {<p className="text-center">{labelText}</p>}
         </div>
       </div>
     </>

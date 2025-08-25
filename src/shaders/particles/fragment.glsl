@@ -78,7 +78,7 @@ void main() {
     //     discard;
     // }
 
-    // finalColor *= texture2D(uVideoTexture, vUv).rgba;
+    finalColor *= texture2D(uVideoTexture, vUv).rgba;
 
     gl_FragColor = finalColor;
 }

@@ -13,7 +13,7 @@ import { Slider } from "radix-ui";
 function SliderUI(props) {
   const { label, onChange, name, d_value, phaseOffset, vmax } = props;
 
-  let offset = useMemo(() => Math.random() * 4 * Math.PI, []);
+  let offset = useMemo(() => Math.random() * 5 * Math.PI, []);
 
   if (phaseOffset) {
     offset = phaseOffset;

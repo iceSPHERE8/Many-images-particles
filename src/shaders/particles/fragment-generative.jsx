@@ -33,6 +33,8 @@ function generateFragmentShader(textureCount) {
       // 动态亮度分段
       ${generateBrightnessConditions(textureCount)}
 
+      // finalColor += (texture2D(uVideoTexture, vUv).rgba);
+
       gl_FragColor = finalColor;
     }
   `;
